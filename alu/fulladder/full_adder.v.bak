@@ -1,0 +1,22 @@
+module fulladder(
+	input a_i,
+	input b_i,
+	input cin,
+	
+	output res_o,
+	output cout
+);
+
+	wire cinANDa_w;
+	wire cinANDb_w;
+	wire aANDb_w;
+	wire aXORb_w;
+
+	assign aXORb_w = a_i ^ b_i;
+	assign cinANDa_w = cin & a_i;
+	assign cinANDb_w = cin & b_i;
+	assign aANDb_w = a_i & b_i;
+	assign res_o = cin ^ aXORb_w;
+	assign cout = cinANDa_w | cinANDb_w | aANDb_w;
+
+endmodule 

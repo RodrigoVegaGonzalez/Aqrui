@@ -1,0 +1,20 @@
+4'b0000: //add  
+    res_o =
+4'b0001: //sub  
+    res_o =
+4'b0010: //sll  
+    res_o =
+4'b0100: //slt  
+    res_o =
+4'b0110: //sltu 
+    res_o =
+4'b1000: //xor  
+    res_o =
+4'b1010: //srl  
+    res_o =
+4'b1011: //sra  
+    res_o =
+4'b1100: //or   
+    res_o =
+4'b1110: //and  
+    res_o =

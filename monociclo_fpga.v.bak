@@ -1,0 +1,81 @@
+module alu_fpga(
+	input		[3:0] dira_i,
+	input		[3:0] dirb_i
+	input				c_i,
+	input		[1:0] ope_i,
+	input				c_0,
+	output	[6:0] disp1,
+	output	[6:0] disp2,
+	output	[6:0] disp3,
+	output	[6:0] disp4,
+	output	[6:0] disp5,
+	output	[6:0] disp6,
+	output	[6:0] disp7
+);
+
+	wire		[31:0]opeadora_w;
+	wire		[31:0]opeadorb_w;
+	
+	//rom para el operando 1
+	memoriarom_a rom_a(
+		dir_i		(dira_i)
+	   dato_o	(operadora_w)
+	);
+	
+	//rom para el operando b
+	memoriarom_b rom_b(
+		dir_i		(dirb_i)
+	   dato_o	(operadorb_w)
+	);
+	
+	//ALU
+	aluN alu(
+		.a_i			(operadora_w),
+		.b_i			(operadorb_w),
+		.c_i			(c_i),
+		.ope_i		(ope_i),
+		.c_o			(c_o),
+		.res_o		(resultado_w),
+	);
+	
+	display7seg disp0(
+		.entrada_i		(resultado_w[3:0]),
+		.salida_o		(disp0)
+	);
+	
+	display7seg disp1(
+		.entrada_i		(resultado_w[7:4]),
+		.salida_o		(disp0)
+	);
+	
+	display7seg disp2(
+		.entrada_i		(resultado_w[11:8]),
+		.salida_o		(disp0)
+	);
+	
+	display7seg disp3(
+		.entrada_i		(resultado_w[15:12]),
+		.salida_o		(disp0)
+	);
+	
+	display7seg disp4(
+		.entrada_i		(resultado_w[19:16]),
+		.salida_o		(disp0)
+	);
+	
+	display7seg disp5(
+		.entrada_i		(resultado_w[23:20]),
+		.salida_o		(disp0)
+	);
+	
+	display7seg disp6(
+		.entrada_i		(resultado_w[27:24]),
+		.salida_o		(disp0)
+	);
+	
+	display7seg disp7(
+		.entrada_i		(resultado_w[31:28]),
+		.salida_o		(disp0)
+	);
+
+endmodule

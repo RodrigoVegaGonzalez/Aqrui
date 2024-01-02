@@ -1,0 +1,14 @@
+|full_adder
+a_i => aXORb_w.IN0
+a_i => cinANDa_w.IN0
+a_i => aANDb_w.IN0
+b_i => aXORb_w.IN1
+b_i => cinANDb_w.IN0
+b_i => aANDb_w.IN1
+c_i => cinANDa_w.IN1
+c_i => cinANDb_w.IN1
+c_i => s_o.IN1
+s_o << s_o.DB_MAX_OUTPUT_PORT_TYPE
+c_o << c_o.DB_MAX_OUTPUT_PORT_TYPE
+
+

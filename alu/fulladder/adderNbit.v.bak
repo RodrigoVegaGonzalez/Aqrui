@@ -1,0 +1,15 @@
+module adderNbits #(
+	parameterN=32
+	)(
+	input		[N-1:0]	a_i,
+	input		[N-1:0]	b_i,
+	input					c_i,
+	output	[N-1:0]	s_o,
+	output				c_o
+	
+	
+	
+
+);
+
+endmodule

@@ -1,0 +1,39 @@
+Address     Code        Basic                        Line Source
+
+0x00400000  0x01900293  addi x5,x0,25                2    	li t0, 25
+0x00400004  0x00502023  sw x5,0(x0)                  3    	sw t0, 0(x0)
+0x00400008  0x00f00313  addi x6,x0,15                4    	li t1, 15
+0x0040000c  0x00602223  sw x6,4(x0)                  5    	sw t1, 4(x0)
+0x00400010  0x02900393  addi x7,x0,0x00000029        6    	li t2, 41
+0x00400014  0x00702223  sw x7,4(x0)                  7    	sw t2, 4(x0)
+0x00400018  0x00a00e13  addi x28,x0,10               8    	li t3, 10
+0x0040001c  0x01c02223  sw x28,4(x0)                 9    	sw t3, 4(x0)
+0x00400020  0x00a00e93  addi x29,x0,10               10   	li t4, 10
+0x00400024  0x01d02223  sw x29,4(x0)                 11   	sw t4, 4(x0)
+0x00400028  0x00100f13  addi x30,x0,1                12   	li t5, 1
+0x0040002c  0x01e02223  sw x30,4(x0)                 13   	sw t5, 4(x0)
+0x00400030  0x06500f93  addi x31,x0,0x00000065       14   	li t6, 101
+0x00400034  0x01f02223  sw x31,4(x0)                 15   	sw t6, 4(x0)
+0x00400038  0x00000413  addi x8,x0,0                 19   	addi s0, x0, 0
+0x0040003c  0x00700913  addi x18,x0,7                20   	addi s2, x0, 7
+0x00400040  0x00000493  addi x9,x0,0                 21   	addi s1, x0, 0
+0x00400044  0x012422b3  slt x5,x8,x18                23   	for_i:	slt t0, s0, s2
+0x00400048  0x00029463  bne x5,x0,0x00000008         24   		bne t0, x0, for_j
+0x0040004c  0x0480006f  jal x0,0x00000048            25   		jal x0, fin
+0x00400050  0x0124a333  slt x6,x9,x18                27   	for_j:	slt t1, s1, s2
+0x00400054  0x00031463  bne x6,x0,0x00000008         28   		bne t1,x0, compara
+0x00400058  0x0280006f  jal x0,0x00000028            29   		jal x0, incrementa_i
+0x0040005c  0x00241393  slli x7,x8,2                 32   		slli t2, s0, 2
+0x00400060  0x00249e13  slli x28,x9,2                33   		slli t3, s1, 2
+0x00400064  0x0003ae83  lw x29,0(x7)                 34   		lw t4, 0(t2)
+0x00400068  0x000e2f03  lw x30,0(x28)                35   		lw t5, 0(t3)
+0x0040006c  0x01eeafb3  slt x31,x29,x30              36   		slt t6, t4, t5
+0x00400070  0x000f9c63  bne x31,x0,0x00000018        37   		bne t6, x0, burbuja
+0x00400074  0x0040006f  jal x0,0x00000004            38   		jal x0, incrementa_j
+0x00400078  0x00148493  addi x9,x9,1                 40   incrementa_j:	addi s1, s1, 1
+0x0040007c  0xfd5ff06f  jal x0,0xffffffd4            41   		jal x0, for_j
+0x00400080  0x00140413  addi x8,x8,1                 43   incrementa_i:	addi s0, s0, 1
+0x00400084  0xfc1ff06f  jal x0,0xffffffc0            44   		jal x0, for_i
+0x00400088  0x01de2023  sw x29,0(x28)                46   burbuja:	sw t4, 0(t3)
+0x0040008c  0x01e3a023  sw x30,0(x7)                 47   		sw t5, 0(t2)
+0x00400090  0xfe9ff06f  jal x0,0xffffffe8            48   		jal x0, incrementa_j

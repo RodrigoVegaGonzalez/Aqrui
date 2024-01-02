@@ -1,0 +1,26 @@
+|alu
+a_i => a_i.IN1
+b_i => b_w.DATAA
+b_i => b_w.DATAB
+c_i => c_i.IN1
+ope_i[0] => Mux0.IN1
+ope_i[1] => Mux0.IN0
+res_o << Mux0.DB_MAX_OUTPUT_PORT_TYPE
+c_o << full_adder:fa1.c_o
+less_i => Mux0.IN2
+
+
+|alu|full_adder:fa1
+a_i => aXORb_w.IN0
+a_i => cinANDa_w.IN0
+a_i => aANDb_w.IN0
+b_i => aXORb_w.IN1
+b_i => cinANDb_w.IN0
+b_i => aANDb_w.IN1
+c_i => cinANDa_w.IN1
+c_i => cinANDb_w.IN1
+c_i => s_o.IN1
+s_o <= s_o.DB_MAX_OUTPUT_PORT_TYPE
+c_o <= c_o.DB_MAX_OUTPUT_PORT_TYPE
+
+
